@@ -7,7 +7,7 @@ describe("About Operators (about_operators.js)", function() {
       result = result + i;
     }
     // What is the value of result?
-    expect(FILL_ME_IN).toBe(result);
+    expect(result).toBe(15); // Сумма 0 + 1 + 2 + 3 + 4 + 5 = 15
   });
 
   it("assignment addition", function() {
@@ -17,7 +17,7 @@ describe("About Operators (about_operators.js)", function() {
       result += i;
     }
     // What is the value of result?
-    expect(FILL_ME_IN).toBe(result);
+    expect(result).toBe(15); // Сумма 0 + 1 + 2 + 3 + 4 + 5 = 15
   });
 
   it("subtraction", function() {
@@ -26,7 +26,7 @@ describe("About Operators (about_operators.js)", function() {
       result = result - i;
     }
     // What is the value of result?
-    expect(FILL_ME_IN).toBe(result);
+    expect(result).toBe(2); // 5 - 0 - 1 - 2 = 2
   });
 
   it("assignment subtraction", function() {
@@ -35,7 +35,7 @@ describe("About Operators (about_operators.js)", function() {
       result -= i;
     }
     // What is the value of result?
-    expect(FILL_ME_IN).toBe(result);
+    expect(result).toBe(2); // 5 - 0 - 1 - 2 = 2
   });
 
   //Assignment operators are available for multiplication and division as well
@@ -47,17 +47,17 @@ describe("About Operators (about_operators.js)", function() {
     //again this is exactly the same as result = result % x
     result %= x;
     // What is the value of result?
-    expect(FILL_ME_IN).toBe(result);
+     expect(result).toBe(0); // Остаток от деления 10 на 5 равен 0
   });
 
   it("typeof", function() {
     // what is the type of an empty object?
-    expect(FILL_ME_IN).toBe(typeof({}));
+    expect(typeof({})).toBe("object"); // пустой объект
     // what is the type of a string?
-    expect(FILL_ME_IN).toBe(typeof('apple'));
+    expect(typeof('apple')).toBe("string"); // строка
     // what is the type of -5?
-    expect(FILL_ME_IN).toBe(typeof(-5));
+    expect(typeof(-5)).toBe("number"); // число
     // what is the type of false?
-    expect(FILL_ME_IN).toBe(typeof(false));
+    expect(typeof(false)).toBe("boolean"); // логическое значение
   });
 });
