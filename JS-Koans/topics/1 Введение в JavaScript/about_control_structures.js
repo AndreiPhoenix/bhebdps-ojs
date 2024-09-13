@@ -1,4 +1,4 @@
-describe("About Control Structures (about_control_structures.js)", function(){
+describe("About Control Structures (about_control_structures.js)", function() {
   it("if", function() {
     let isPositive = false;
     if (2 > 0) {
@@ -6,17 +6,17 @@ describe("About Control Structures (about_control_structures.js)", function(){
     }
 
     // what is the value of isPositive?
-    expect(FILL_ME_IN).toBe(isPositive);
+    expect(isPositive).toBe(true); // Значение isPositive будет true
   });
 
   it("for", function() {
     let counter = 10;
     for (let i = 1; i <= 3; i++) {
-      counter = counter + i;
+      counter = counter + i; // counter = 10 + 1 + 2 + 3
     }
 
     // what is the value of counter?
-    expect(FILL_ME_IN).toBe(counter);
+    expect(counter).toBe(16); // Значение counter будет 16
   });
 
   it("for in", function() {
@@ -28,19 +28,19 @@ describe("About Control Structures (about_control_structures.js)", function(){
     let result = "";
     // for in enumerates the property names of an object
     for (let property_name in person) {
-        result = result + property_name;
+      result = result + property_name; // result будет "nameage"
     }
 
     // what is the value of result?
-    expect(FILL_ME_IN).toBe(result);
+    expect(result).toBe("nameage"); // Значение result будет "nameage"
   });
 
   it("ternary operator", function() {
     let fruit = true ? "apple" : "orange";
-    expect(FILL_ME_IN).toBe(fruit, 'what is the value of fruit?');
+    expect(fruit).toBe("apple", 'what is the value of fruit?'); // Значение fruit будет "apple"
 
     fruit = false ? "apple" : "orange";
-    expect(FILL_ME_IN).toBe(fruit, 'now what is the value of fruit?');
+    expect(fruit).toBe("orange", 'now what is the value of fruit?'); // Значение fruit будет "orange"
   });
 
   it("switch", function() {
@@ -49,13 +49,13 @@ describe("About Control Structures (about_control_structures.js)", function(){
       case 1:
         result = 1;
         break;
-      case 1+1:
-        result = 2;
+      case 1 + 1:
+        result = 2; // 1 + 1 равно 2, поэтому выполнится этот блок
         break;
     }
 
     // what is the value of result?
-    expect(FILL_ME_IN).toBe(result);
+    expect(result).toBe(2); // Значение result будет 2
   });
 
   it("switch default case", function() {
@@ -66,20 +66,20 @@ describe("About Control Structures (about_control_structures.js)", function(){
         break;
       case "s":
         result = "Samwise";
-          break;
+        break;
       default:
-        result = "Merry";
+        result = "Merry"; // Так как ни один из case не соответствует, выполнится default
         break;
     }
 
     // what is the value of result?
-    expect(FILL_ME_IN).toBe(result);
+    expect(result).toBe("Merry"); // Значение result будет "Merry"
   });
 
   it("null coalescing", function() {
-    let result = null || "a value";
+    let result = null || "a value"; // Если первое значение null, вернется второе значение
 
     // what is the value of result?
-    expect(FILL_ME_IN).toBe(result);
+    expect(result).toBe("a value"); // Значение result будет "a value"
   });
 });
