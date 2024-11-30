@@ -3,6 +3,7 @@ describe("About Prototypal Inheritance (about_prototypal_inheritance.js)", funct
   let Mammal = function(name) {
     this.name = name;
   }
+  
   // things that don't need to be set in the constructor should be added to the constructor's prototype property.
   Mammal.prototype = {
     sayHi: function() {
@@ -14,7 +15,7 @@ describe("About Prototypal Inheritance (about_prototypal_inheritance.js)", funct
     let eric  = new Mammal("Eric");
 
     // what will Eric say?
-    expect(FILL_ME_IN).toBe(eric.sayHi());
+    expect(eric.sayHi()).toBe("Hello, my name is Eric");
   });
 
   // add another function to the Mammal 'type' that uses the sayHi function
@@ -26,7 +27,7 @@ describe("About Prototypal Inheritance (about_prototypal_inheritance.js)", funct
     let bobby = new Mammal("Bobby");
 
     // what is Bobby's favourite saying?
-    expect(FILL_ME_IN).toBe(bobby.favouriteSaying()); 
+    expect(bobby.favouriteSaying()).toBe("Bobby's favourite saying is Hello, my name is Bobby"); 
   });
 
   it("calling functions added to a prototype after an object was created", function() {
@@ -34,11 +35,9 @@ describe("About Prototypal Inheritance (about_prototypal_inheritance.js)", funct
     Mammal.prototype.numberOfLettersInName = function() {
       return this.name.length;
     };
-    // the following statement asks the paul object to call a function that was added
-    // to the Mammal prototype after paul was constructed.
-
+    
     // how long is Paul's name?
-    expect(FILL_ME_IN).toBe(paul.numberOfLettersInName());
+    expect(paul.numberOfLettersInName()).toBe(4);
   });
 
   // helper function for inheritance. 
@@ -60,9 +59,9 @@ describe("About Prototypal Inheritance (about_prototypal_inheritance.js)", funct
     let lenny = new Bat("Lenny", "1.5m");
 
     // what does Lenny say?
-    expect(FILL_ME_IN).toBe(lenny.sayHi());
+    expect(lenny.sayHi()).toBe("Hello, my name is Lenny");
 
     // what is Lenny's wingspan?
-    expect(FILL_ME_IN).toBe(lenny.wingspan);
+    expect(lenny.wingspan).toBe("1.5m");
   });
 });
