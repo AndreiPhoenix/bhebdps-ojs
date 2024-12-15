@@ -88,4 +88,79 @@ console.log(picknick.state); // 10
 picknick.fix();
 console.log(picknick.state); // 15
 
+
 //задача 2
+class Library {
+    constructor(name) {
+        this.name = name;
+        this.books = [];
+    }
+
+    addBook(book) {
+        if (book.state > 30) {
+            this.books.push(book);
+        }
+    }
+
+    findBookBy(type, value) {
+        return this.books.find(book => book[type] === value) || null;
+    }
+
+    giveBookByName(bookName) {
+        const bookIndex = this.books.findIndex(book => book.name === bookName);
+        if (bookIndex !== -1) {
+            return this.books.splice(bookIndex, 1)[0];
+        }
+        return null;
+    }
+}
+
+// Тестовый сценарий
+const library = new Library("Библиотека имени Ленина");
+
+// Добавление печатных изданий
+library.addBook(
+    new DetectiveBook(
+        "Артур Конан Дойл",
+        "Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе",
+        2019,
+        1008
+    )
+);
+library.addBook(
+    new FantasticBook(
+        "Аркадий и Борис Стругацкие",
+        "Пикник на обочине",
+        1972,
+        168
+    )
+);
+library.addBook(new NovelBook("Герберт Уэллс", "Машина времени", 1895, 138));
+library.addBook(new Magazine("Мурзилка", 1924, 60));
+
+// Поиск книги
+console.log(library.findBookBy("name", "Властелин колец")); // null
+console.log(library.findBookBy("releaseDate", 1924).name); // "Мурзилка"
+
+// Количество книг до выдачи
+console.log("Количество книг до выдачи: " + library.books.length); // 4
+
+// Выдача книги
+const borrowedBook = library.giveBookByName("Машина времени");
+console.log("Количество книг после выдачи: " + library.books.length); // 3
+
+// Повреждение выданной книги
+borrowedBook.state = 20; // Устанавливаем состояние ниже 30
+
+// Восстановление выданной книги
+borrowedBook.fix(); // Состояние должно увеличиться до 30 (но не более 100)
+
+// Попытка добавить восстановленную книгу обратно в библиотеку
+library.addBook(borrowedBook); // Книга не добавится, так как состояние 30
+
+// Проверка состояния книги
+console.log(borrowedBook.state); // 30
+console.log("Количество книг после попытки добавить восстановленную книгу: " + library.books.length); // 3
+
+
+//задача 3
