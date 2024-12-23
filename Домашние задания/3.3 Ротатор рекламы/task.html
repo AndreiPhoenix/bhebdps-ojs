@@ -1,39 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ротатор рекламы</title>
-    <link rel="stylesheet" href="task.css">
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ротатор объявлений</title>
+    <style>
+        .rotator__case {
+            display: none;
+        }
+        .rotator__case_active {
+            display: inline;
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <div class="logo__container">
-          <a href="https://netology.ru/" class="logo__link"></a>
-        </div>
-        <h1 class="header__title">
-          Домашнее задание к занятию 3.3 «Объект события. Работа с HTML-формами. Изменение структуры HTML-документа. DOM — Document object model». Ротатор рекламы.
-        </h1>
-    </header>
-    <main class="content">
-        <div class="card">
-            <p>
-                Я
-                <span class="rotator">
-                <span class="rotator__case rotator__case_active" data-speed="1000" data-color="red">Бог JS</span>
-                <span class="rotator__case" data-speed="2000" data-color="green">Лучший программист на земле</span>
-                <span class="rotator__case" data-speed="1000" data-color="#000">покорю этот мир</span>
-                <span class="rotator__case" data-speed="1000" data-color="red">учусь в Нетологии</span>
-                <span class="rotator__case" data-speed="500" data-color="blue">счастливый как никто</span>
-                <span class="rotator__case" data-speed="200" data-color="gray">радуюсь жизни</span>
-              </span>
-            </p>
-        </div>
-    </main>
-    
-    <script src="task.js"></script>
+    <p>
+        Я
+        <span class="rotator">
+            <span class="rotator__case rotator__case_active">Бог JS</span>
+            <span class="rotator__case">Лучший программист на земле</span>
+            <span class="rotator__case">покорю этот мир</span>
+            <span class="rotator__case">учусь в Нетологии</span>
+            <span class="rotator__case">счастливый как никто</span>
+            <span class="rotator__case">радуюсь жизни</span>
+        </span>
+    </p>
+
+    <p>
+        Я
+        <span class="rotator">
+            <span class="rotator__case rotator__case_active">Программирую на Python</span>
+            <span class="rotator__case">Изучаю машинное обучение</span>
+            <span class="rotator__case">Создаю веб-приложения</span>
+            <span class="rotator__case">Развиваю свои навыки</span>
+        </span>
+    </p>
+
+    <script>
+        const rotators = document.querySelectorAll('.rotator');
+
+        rotators.forEach(rotator => {
+            const cases = rotator.querySelectorAll('.rotator__case');
+            let activeIndex = 0;
+
+            function changeCase() {
+                const currentCase = cases[activeIndex];
+                currentCase.classList.remove('rotator__case_active');
+
+                // Переход к следующему элементу
+                activeIndex = (activeIndex + 1) % cases.length;
+                const nextCase = cases[activeIndex];
+
+                nextCase.classList.add('rotator__case_active');
+
+                // Установка цвета текста (если указано)
+                nextCase.style.color = nextCase.dataset.color || 'black'; // Установите цвет по умолчанию
+
+                // Запускаем смену объявления с задержкой, указанной в data-speed
+                setTimeout(changeCase, nextCase.dataset.speed || 1000); // Установите скорость по умолчанию
+            }
+
+            // Запуск смены объявлений
+            changeCase();
+        });
+    </script>
 </body>
 </html>
